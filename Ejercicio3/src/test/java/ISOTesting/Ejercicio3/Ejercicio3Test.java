@@ -93,14 +93,12 @@ public class Ejercicio3Test {
 		assertEquals(2, completitud);
 	}
 
-	@Test
+	@Test(expected = ValorNoValido.class)
 	public void testAlgo2() {
 
-		try {
-			int correcion = prueba.algo(300, 0, 1, 1, 2, 4, 4);
-		} catch (Exception e) {
-			Assert.fail("Valor introducido erroneo");
-		}
+		int correcion = prueba.algo(300, 0, 1, 1, 2, 4, 4);
+		
+
 	}
 
 	@Test
@@ -148,4 +146,15 @@ public class Ejercicio3Test {
 
 	}
 
+}
+class ValorNoValido extends Exception {
+	private String S;
+
+	ValorNoValido() {
+		S = "Valor introducido erroneo";
+	}
+
+	public String toString() {
+		return S;
+	}
 }
