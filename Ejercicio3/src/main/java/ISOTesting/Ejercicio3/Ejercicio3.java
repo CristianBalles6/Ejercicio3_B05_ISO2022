@@ -53,9 +53,9 @@ public class Ejercicio3 {
 
 	public static int calcular(int ad, int man) {
 		int calidad = 0;
-try {
+
 		if (ad == 0 || man == 0)
-			throw new ValorNoValido();
+			calidad = -1;
 		else {
 			if (ad == 1)
 				calidad = 1;
@@ -78,48 +78,33 @@ try {
 			else
 				calidad = 4;
 		}
-}catch(ValorNoValido e) {
-	System.out.println(e.toString());
-	e.notify();
-}
+
 		return calidad;
 	}
 
 	public static int algo(int valor, int v1, int v2, int v3, int v4, int v5, int v6) {
-		try {
-			if (valor < 0 || valor > 100)
-				throw new ValorNoValido();
 
+		int aux = 0;
+		if (valor < 0 || valor > 100) {
+			aux = -1;
+		}else {
 			if (valor < 10) {
-				valor = v1;
+				aux = v1;
 			} else if (valor >= 10 && valor < 35) {
-				valor = v2;
+				aux = v2;
 			} else if (valor >= 35 && valor < 50) {
-				valor = v3;
+				aux = v3;
 			} else if (valor >= 50 && valor < 70) {
-				valor = v4;
+				aux = v4;
 			} else if (valor >= 70 && valor < 90) {
-				valor = v5;
+				aux = v5;
 			} else {
-				valor = v6;
+				aux = v6;
 			}
-		} catch (ValorNoValido e) {
-			System.out.println(e.toString());
-			e.notify();
 		}
-		return valor;
+
+		return aux;
 	}
 
 }
 
-class ValorNoValido extends Exception {
-	private String S;
-
-	ValorNoValido() {
-		S = "Valor introducido erroneo";
-	}
-
-	public String toString() {
-		return S;
-	}
-}
